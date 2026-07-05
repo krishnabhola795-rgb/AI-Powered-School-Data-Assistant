@@ -98,7 +98,12 @@ def _mk_students(n: int) -> List[Dict[str, Any]]:
         })
     return out
 
+_seeded = False
+
 async def ensure_seed():
+    global _seeded
+    if _seeded:
+        return
     count = await db.students.count_documents({})
     if count == 0:
         random.seed(42)
@@ -111,6 +116,7 @@ async def ensure_seed():
             "uploaded_at": datetime.now(timezone.utc).isoformat(),
             "seed": True
         })
+    _seeded = True
 
 # ---------------- Auth (demo) ----------------
 
@@ -464,7 +470,6 @@ async def seed(inp: SeedIn):
 
 @api_router.get("/")
 async def root():
-    await ensure_seed()
     return {"app": "EduChat AI", "status": "ready"}
 
 # ---------------- App wiring ----------------
@@ -484,7 +489,10 @@ logger = logging.getLogger(__name__)
 
 @app.on_event("startup")
 async def on_start():
-    await ensure_seed()
+    # Do not block startup on seeding — Atlas cold-start + 300 inserts can
+    # exceed the readiness probe. Seeding happens lazily via ensure_seed()
+    # inside data endpoints.
+    logger.info("EduChat AI backend started")
 
 @app.on_event("shutdown")
 async def shutdown_db_client():
