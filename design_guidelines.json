@@ -1,0 +1,114 @@
+{
+  "theme": "light",
+  "archetype": "4 (Swiss & High-Contrast)",
+  "emotional_tone": "Authority, clarity, modern modernity, and trust. Feels like a premium, executive-level oversight tool rather than a generic tech platform.",
+  "colors": {
+    "background": {
+      "light": "#FFFFFF",
+      "dark": "#0A0A0A"
+    },
+    "surface": {
+      "light": "#F9FAFB",
+      "dark": "#111111"
+    },
+    "primary": {
+      "default": "#002FA7",
+      "hover": "#002480",
+      "text": "#FFFFFF"
+    },
+    "accent": {
+      "default": "#FF3B30",
+      "hover": "#D63028",
+      "text": "#FFFFFF"
+    },
+    "text": {
+      "light_mode_primary": "#111111",
+      "light_mode_secondary": "#525252",
+      "dark_mode_primary": "#FFFFFF",
+      "dark_mode_secondary": "#A3A3A3"
+    },
+    "border": {
+      "light": "#E5E5E5",
+      "dark": "#262626"
+    }
+  },
+  "typography": {
+    "headings": {
+      "family": "'Cabinet Grotesk', sans-serif",
+      "weights": ["400", "800", "900"],
+      "strategy": "High contrast weights. Use font-black for hero/main headings and font-normal for section headers. Tracking-tighter for all sizes above 32px."
+    },
+    "body": {
+      "family": "'IBM Plex Sans', sans-serif",
+      "weights": ["400", "500", "600"],
+      "strategy": "Sterile, highly legible mono-inspired body font to contrast the expressive headings."
+    },
+    "mono": {
+      "family": "'IBM Plex Mono', monospace",
+      "strategy": "For data points, file names, and metric values."
+    },
+    "scale": {
+      "h1": "text-5xl md:text-6xl tracking-tighter leading-none font-black",
+      "h2": "text-3xl md:text-4xl tracking-tight leading-tight font-extrabold",
+      "h3": "text-xl md:text-2xl tracking-tight font-bold",
+      "body": "text-base leading-relaxed text-gray-700 dark:text-gray-300",
+      "small": "text-sm tracking-wide uppercase font-medium text-gray-500"
+    }
+  },
+  "spacing_and_layout": {
+    "strategy": "Generous Spacing Philosophy. Use p-8 or p-12 for dashboard cards. The Bento Grid Protocol (Control Room mode) for the dashboard. Tight gap-4 or gap-6 for dashboard widgets, ensuring every pixel is utilized with h-full.",
+    "radius": "rounded-none md:rounded-lg",
+    "borders": "1px solid crisp borders (border-gray-200 dark:border-gray-800). No soft muddy shadows. Use sharp inner contrasts.",
+    "shadows": {
+      "card": "shadow-sm",
+      "floating": "shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
+    }
+  },
+  "components": {
+    "buttons": "Sharp edges or minimal radius (rounded-md). High contrast. Primary buttons are #002FA7 with pure white text.",
+    "cards": "Flat background, 1px subtle border, no heavy shadow. On hover, slight lift (-translate-y-1) and subtle shadow.",
+    "inputs": "Shadcn UI standard, customized with sharp radius and border-gray-300. Focus ring: ring-2 ring-[#002FA7].",
+    "chat_interface": "Streaming response UI pattern. User messages right-aligned in subtle gray bubbles. AI responses left-aligned with no bubble (transparent background) but rich markdown text, clear citations, and embedded tables/charts. Input field auto-focused at bottom.",
+    "sidebar": "Collapsible left sidebar for app navigation. Dark or light depending on theme, utilizing a 1px right border. Clean IBM Plex Sans links.",
+    "dashboard_charts": "Recharts. Use Line charts for trends, Bar charts for comparisons. Avoid walls of charts; focus on a single North Star Metric in the top left quadrant.",
+    "tables": "Dense, grid-border style. border-collapse. Data aligned left. Use IBM Plex Mono for numeric columns."
+  },
+  "motion_and_interactions": {
+    "hover": "Explicitly set hover text colors. Hover states must be a lighter hue of active state.",
+    "transitions": "transition-all duration-200 ease-out",
+    "chat": "Smooth staggered fade-in for AI message tokens. Subtle pulse for typing indicator."
+  },
+  "media_and_assets": {
+    "icons": "@phosphor-icons/react for duotone, high-end look across the dashboard.",
+    "images": {
+      "landing_hero_building": {
+        "url": "https://images.pexels.com/photos/33860720/pexels-photo-33860720.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Modern educational building with glass facade, to be used in the landing page hero section."
+      },
+      "landing_feature_building": {
+        "url": "https://images.unsplash.com/photo-1621192754911-ffe0d95929dd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NjV8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBzY2hvb2wlMjBidWlsZGluZyUyMGFyY2hpdGVjdHVyZXxlbnwwfHx8fDE3ODMyNTY1MTl8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Secondary modern school building for feature sections."
+      },
+      "testimonial_teacher_1": {
+        "url": "https://images.unsplash.com/photo-1544717305-2782549b5136?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2ODl8MHwxfHNlYXJjaHwyfHx0ZWFjaGVyJTIwcG9ydHJhaXQlMjBzbWlsaW5nfGVufDB8fHx8MTc4MzI1NjUxOXww&ixlib=rb-4.1.0&q=85",
+        "description": "Smiling teacher portrait for testimonials or persona representation."
+      },
+      "abstract_data_background": {
+        "url": "https://images.unsplash.com/photo-1483959651481-dc75b89291f1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwzfHxhYnN0cmFjdCUyMGdlb21ldHJpYyUyMHNoYXBlcyUyMGRhdGF8ZW58MHx8fHwxNzgzMjU2NTIwfDA&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract geometric data background for the login page or file upload area."
+      }
+    }
+  },
+  "accessibility": {
+    "contrast": "Ensure APCA contrast standards. Never use gray-on-gray for essential data.",
+    "testing": "All interactive elements MUST include a data-testid attribute using kebab-case role-based naming (e.g., data-testid='upload-excel-button')."
+  },
+  "instructions_to_main_agent": [
+    "Install @phosphor-icons/react and recharts.",
+    "Setup Tailwind config to include Cabinet Grotesk for sans and IBM Plex Sans for body.",
+    "Ensure the landing page features a clear CTA, high contrast typography, and uses the provided modern building image.",
+    "Implement a premium chat interface similar to Dust/ChatGPT with no chat bubbles for AI, but structured markdown and data tables.",
+    "Dashboard must follow the Control Room grid mode. Dense, compact, using Recharts for visual data.",
+    "Ensure a dark mode toggle is available, switching seamlessly between Stark White and Dark Charcoal (#0A0A0A) backgrounds."
+  ]
+}
