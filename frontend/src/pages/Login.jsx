@@ -50,7 +50,7 @@ export default function Login() {
         <div className="absolute inset-0 opacity-20 bg-grid" />
         <div className="relative flex items-center gap-2">
           <div className="h-8 w-8 bg-white/20 grid place-items-center rounded-sm"><Sparkle size={18} weight="fill" /></div>
-          <span className="font-display font-black text-xl">EduChat AI</span>
+          <span className="font-display font-black text-xl">Edu Chat</span>
         </div>
         <div className="relative">
           <div className="mono text-xs uppercase tracking-widest text-white/60">Case Study</div>
@@ -59,7 +59,7 @@ export default function Login() {
           </h2>
           <div className="mt-6 text-sm text-white/80">Dr. Priya Menon · Principal, Delhi Public School</div>
         </div>
-        <div className="relative text-xs mono text-white/60">© 2026 EduChat AI</div>
+        <div className="relative text-xs mono text-white/60">© 2026 Edu Chat</div>
       </div>
 
       <div className="flex items-center justify-center p-6 md:p-12">

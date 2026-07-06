@@ -11,7 +11,7 @@ export default function Landing() {
             <div className="h-7 w-7 bg-klein grid place-items-center rounded-sm">
               <Sparkle weight="fill" size={16} color="#fff" />
             </div>
-            <span className="font-display font-black text-lg tracking-tight">EduChat AI</span>
+            <span className="font-display font-black text-lg tracking-tight">Edu Chat</span>
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm text-neutral-600 dark:text-neutral-400">
             <a href="#features" className="hover:text-neutral-900 dark:hover:text-white">Features</a>
@@ -39,7 +39,7 @@ export default function Landing() {
             </h1>
             <p className="mt-6 text-lg text-neutral-600 dark:text-neutral-400 max-w-xl leading-relaxed">
               Upload student data once. Ask anything in plain English — attendance, marks, fees, transport, toppers.
-              EduChat AI answers with tables, charts and profile cards. No formulas. No pivot tables.
+              Edu Chat answers with tables, charts and profile cards. No formulas. No pivot tables.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link data-testid="hero-upload-btn" to="/login" className="bg-klein hover:bg-klein-dark text-white font-medium px-6 py-3 rounded-md inline-flex items-center gap-2 transition-all duration-200">
@@ -65,7 +65,7 @@ export default function Landing() {
               <div className="p-5 space-y-3 text-sm">
                 <div className="text-right"><span className="inline-block bg-neutral-100 dark:bg-neutral-800 rounded-md px-3 py-2">Who scored above 95% in Class 10?</span></div>
                 <div className="text-neutral-800 dark:text-neutral-200">
-                  <div className="mono text-xs text-neutral-500 mb-1">EduChat AI</div>
+                  <div className="mono text-xs text-neutral-500 mb-1">Edu Chat</div>
                   4 students in Class 10 scored above 95%.
                   <div className="mt-2 border border-neutral-200 dark:border-neutral-800 rounded overflow-hidden">
                     <div className="grid grid-cols-3 mono text-xs bg-neutral-50 dark:bg-neutral-800/60 border-b border-neutral-200 dark:border-neutral-800">

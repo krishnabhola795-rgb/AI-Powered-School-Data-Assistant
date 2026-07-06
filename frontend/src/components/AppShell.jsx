@@ -28,7 +28,7 @@ export default function AppShell() {
             <Sparkle weight="fill" size={16} color="#fff" />
           </div>
           <div>
-            <div className="font-display font-black text-sm leading-none">EduChat AI</div>
+            <div className="font-display font-black text-sm leading-none">Edu Chat</div>
             <div className="mono text-[10px] text-neutral-500 mt-0.5">School Intelligence</div>
           </div>
         </div>

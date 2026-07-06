@@ -134,7 +134,7 @@ export default function Chat() {
                 <PaperPlaneTilt size={16} weight="fill" />
               </Button>
             </div>
-            <div className="mono text-[10px] text-neutral-500 mt-2 text-center">EduChat AI can make mistakes · Always verify critical decisions</div>
+            <div className="mono text-[10px] text-neutral-500 mt-2 text-center">Edu Chat can make mistakes · Always verify critical decisions</div>
           </div>
         </div>
       </div>
@@ -174,7 +174,7 @@ function Message({ role, content, streaming }) {
   }
   return (
     <div className="animate-fade-up">
-      <div className="mono text-[10px] uppercase tracking-widest text-klein mb-2 flex items-center gap-1"><Sparkle size={10} weight="fill" /> EduChat AI</div>
+      <div className="mono text-[10px] uppercase tracking-widest text-klein mb-2 flex items-center gap-1"><Sparkle size={10} weight="fill" /> Edu Chat</div>
       <div className="chat-markdown text-sm text-neutral-800 dark:text-neutral-200 leading-relaxed" dangerouslySetInnerHTML={{ __html: renderMarkdown(content) }} />
       {streaming && (
         <div className="mt-2 text-klein"><span className="typing-dot"/><span className="typing-dot"/><span className="typing-dot"/></div>

@@ -28,7 +28,7 @@ db = client[os.environ['DB_NAME']]
 
 EMERGENT_LLM_KEY = os.environ.get('EMERGENT_LLM_KEY', '')
 
-app = FastAPI(title="EduChat AI")
+app = FastAPI(title="Edu Chat")
 api_router = APIRouter(prefix="/api")
 
 # ---------------- Models ----------------
@@ -348,7 +348,7 @@ def _student_summary_json(students: List[Dict[str, Any]]) -> str:
         })
     return json.dumps(trimmed)
 
-SYSTEM_PROMPT = """You are EduChat AI, an expert school data assistant. You help principals, teachers and administrators analyze student data.
+SYSTEM_PROMPT = """You are Edu Chat, an expert school data assistant. You help principals, teachers and administrators analyze student data.
 
 You will be given a JSON dataset of students in the user's message context. Answer questions strictly using that dataset.
 
@@ -470,7 +470,7 @@ async def seed(inp: SeedIn):
 
 @api_router.get("/")
 async def root():
-    return {"app": "EduChat AI", "status": "ready"}
+    return {"app": "Edu Chat", "status": "ready"}
 
 # ---------------- App wiring ----------------
 
@@ -492,7 +492,7 @@ async def on_start():
     # Do not block startup on seeding — Atlas cold-start + 300 inserts can
     # exceed the readiness probe. Seeding happens lazily via ensure_seed()
     # inside data endpoints.
-    logger.info("EduChat AI backend started")
+    logger.info("Edu Chat backend started")
 
 @app.on_event("shutdown")
 async def shutdown_db_client():
