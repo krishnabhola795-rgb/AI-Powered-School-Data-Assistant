@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+motor
+dnspython
+python-dotenv
+python-multipart
+pandas
+openpyxl
+pydantic
+google-genai
