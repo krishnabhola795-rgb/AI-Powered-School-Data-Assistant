@@ -4,13 +4,34 @@ import { Card, CardContent } from "../components/ui/card";
 import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "../components/ui/select";
-import { MagnifyingGlass, Export, Printer } from "@phosphor-icons/react";
+import { MagnifyingGlass, Export, Printer, WhatsappLogo } from "@phosphor-icons/react";
 import { exportCSV, exportPDF, printTable } from "../lib/export";
 
 const CLASSES = ["all", ...Array.from({ length: 12 }, (_, i) => String(i + 1))];
 const SECTIONS = ["all","A","B","C"];
 const GENDERS = ["all","Male","Female"];
 const FEES = ["all","Paid","Pending","Overdue"];
+
+
+// ---- WhatsApp fee reminder (opens WhatsApp with a ready message; no paid API needed) ----
+const toWhatsAppNumber = (mobile) => {
+  const digits = String(mobile || "").replace(/\D/g, "");
+  if (digits.length === 10) return "91" + digits;      // add India code
+  if (digits.length === 12 && digits.startsWith("91")) return digits;
+  return digits;
+};
+
+const reminderText = (r) =>
+  `Dear ${r.father_name || "Parent"},\n` +
+  `This is a gentle reminder from the school office. ` +
+  `The fees of ${r.name} (Class ${r.class}-${r.section}) are ${String(r.fees_status).toLowerCase()}. ` +
+  `Please pay at the earliest. Thank you.`;
+
+const sendWhatsAppReminder = (r) => {
+  const num = toWhatsAppNumber(r.mobile);
+  if (!num) return;
+  window.open(`https://wa.me/${num}?text=${encodeURIComponent(reminderText(r))}`, "_blank", "noopener,noreferrer");
+};
 
 export default function Students() {
   const [rows, setRows] = useState([]);
@@ -54,7 +75,7 @@ export default function Students() {
         <div>
           <div className="mono text-xs uppercase tracking-widest text-neutral-500">Directory</div>
           <h1 className="font-display font-black text-3xl md:text-4xl tracking-tighter">Student Database</h1>
-          <div className="mono text-xs text-neutral-500 mt-1">{rows.length} students</div>
+          <div className="mono text-xs text-neutral-500 mt-1">{rows.length} students · {rows.filter(r => r.fees_status !== "Paid").length} with fees due</div>
         </div>
         <div className="flex gap-2">
           <Button data-testid="export-csv-btn" variant="outline" onClick={() => exportCSV("students.csv", rows, columns)}><Export size={14} className="mr-1" /> Excel</Button>
@@ -80,11 +101,11 @@ export default function Students() {
         <div className="overflow-x-auto thin-scroll">
           <table className="w-full text-sm">
             <thead className="bg-neutral-50 dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-800">
-              <tr>{columns.map(c => <th key={c.key} className="text-left px-4 py-3 mono text-[11px] uppercase tracking-widest text-neutral-500">{c.label}</th>)}</tr>
+              <tr>{columns.map(c => <th key={c.key} className="text-left px-4 py-3 mono text-[11px] uppercase tracking-widest text-neutral-500">{c.label}</th>)}<th className="text-left px-4 py-3 mono text-[11px] uppercase tracking-widest text-neutral-500">Remind</th></tr>
             </thead>
             <tbody>
-              {loading && <tr><td className="p-6 text-center text-neutral-500 mono text-xs" colSpan={columns.length}>Loading…</td></tr>}
-              {!loading && rows.length===0 && <tr><td className="p-6 text-center text-neutral-500" colSpan={columns.length}>No students match your filters.</td></tr>}
+              {loading && <tr><td className="p-6 text-center text-neutral-500 mono text-xs" colSpan={columns.length + 1}>Loading…</td></tr>}
+              {!loading && rows.length===0 && <tr><td className="p-6 text-center text-neutral-500" colSpan={columns.length + 1}>No students match your filters.</td></tr>}
               {rows.map((r) => (
                 <tr key={r.id || r.student_id} className="border-b last:border-b-0 border-neutral-100 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900/60">
                   <td className="px-4 py-2 mono text-xs">{r.student_id}</td>
@@ -98,6 +119,21 @@ export default function Students() {
                     <span className={`text-xs px-2 py-0.5 rounded-full ${r.fees_status==="Paid"?"bg-emerald-500/10 text-emerald-600":r.fees_status==="Pending"?"bg-amber-500/10 text-amber-600":"bg-signal/10 text-signal"}`}>{r.fees_status}</span>
                   </td>
                   <td className="px-4 py-2 mono text-xs text-neutral-500">{r.mobile}</td>
+                  <td className="px-4 py-2">
+                    {r.fees_status !== "Paid" ? (
+                      <Button
+                        data-testid={`whatsapp-remind-${r.student_id}`}
+                        size="sm"
+                        variant="outline"
+                        className="text-emerald-600 border-emerald-500/40 hover:bg-emerald-500/10"
+                        onClick={() => sendWhatsAppReminder(r)}
+                      >
+                        <WhatsappLogo size={14} weight="fill" className="mr-1" /> Remind
+                      </Button>
+                    ) : (
+                      <span className="text-xs text-neutral-400">—</span>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>
