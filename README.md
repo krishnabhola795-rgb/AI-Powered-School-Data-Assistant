@@ -2,6 +2,7 @@ Edu Chat: AI-Powered School Data Assistant
 
 Ask questions about your school's data in plain English and get instant answers with tables and insights. Built for principals, teachers, and administrators who want answers without digging through spreadsheets.
 
+
 Live demo: https://ai-powered-school-data-assistant.vercel.app Backend API: https://edu-chat-backend-iwhx.onrender.com/api/
 
 The backend runs on a free plan and sleeps when idle. The first request can take about 50 seconds to wake it up.
